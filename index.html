@@ -13,31 +13,19 @@
 
     <style>
         body { margin: 0; overflow: hidden; }
-        #ar-button { 
-            position: absolute; top: 10px; left: 10px;
-            background: #28a745; color: white; padding: 10px;
-            border: none; font-size: 16px; cursor: pointer;
-        }
     </style>
 </head>
 <body>
-    <button id="ar-button">Start AR</button>
 
-    <!-- WebAR Scene -->
-    <a-scene 
-        mindar-image="imageTargetSrc: targets.mind" 
-        embedded 
-        color-space="sRGB" 
-        vr-mode-ui="false" 
-        device-orientation-permission-ui="false">
+    <a-scene mindar-image="imageTargetSrc: your-target.mind" embedded color-space="sRGB" vr-mode-ui="false" device-orientation-permission-ui="false">
         
-        <!-- Define Image Target -->
+        <!-- Define Image Target (Using MindAR's Image Target) -->
         <a-mindar-image-target mindar-image-target="targetIndex: 0">
 
-            <!-- Overlay Video on the Newspaper Ad -->
+            <!-- Overlay Video on the Newspaper Ad with full height -->
             <a-video 
                 src="#newspaper-video"
-                width="1.5" height="1"
+                height="100%" width="auto"
                 position="0 0 0"
                 rotation="0 0 0"
                 autoplay
@@ -48,19 +36,13 @@
         
         <!-- Define the Video Asset -->
         <a-assets>
-            <video id="newspaper-video" src="https://github.dev/Envarsha/NewspaperAr/blob/825275a59406457d34ca895132daebc41468cf6f/Summer%20kids%20workshop%20video.mp4" loop="true" autoplay muted></video>
+            <video id="newspaper-video" src="https://www.example.com/your-video.mp4" loop="true" autoplay muted></video>
         </a-assets>
 
         <!-- AR Camera -->
         <a-camera position="0 0 0"></a-camera>
 
     </a-scene>
-
-    <script>
-        document.getElementById("ar-button").addEventListener("click", () => {
-            document.documentElement.requestFullscreen();
-        });
-    </script>
 
 </body>
 </html>
